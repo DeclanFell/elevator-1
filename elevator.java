@@ -58,9 +58,14 @@ public class elevator
     public void board(int newPassengers)
     {
         /* */
-        if (occupants < capacity) {
+        if (capacity < newPassengers) {
+            occupants = capacity;
+        }
+
+        else if(occupants < capacity){
             occupants = occupants + newPassengers;
         }
+
         else {
             /* else display error message*/
             System.out.println("Sorry lift is full!");
@@ -73,9 +78,14 @@ public class elevator
     public void exit(int leavingPassengers)
     {
         /* */
-        if (occupants > 0) {
+        if (leavingPassengers > occupants) {
+            occupants = occupants - occupants;
+        }
+
+        else if(occupants > 0){
             occupants = occupants - leavingPassengers;
         }
+
         else {
             /* else display error message*/
             System.out.println("Sorry lift is empty!");
@@ -105,7 +115,7 @@ public class elevator
     {
         return occupants;
     }
-    
+
     public void moveLift() {
         if (goingUp == true) {
             ascend();
